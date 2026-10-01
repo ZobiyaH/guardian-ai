@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuardianAI | Advanced Drowsiness Monitoring</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="data:,">
+</head>
+<body>
+    <div class="background-overlay"></div>
+    
+    <nav class="navbar">
+        <div class="logo">
+            <span class="logo-accent">G</span>uardian<span class="logo-bold">AI</span>
+        </div>
+        
+        <div class="navbar-center">
+            <span class="main-title">Driver Monitoring <span class="accent-text">Dashboard</span></span>
+            <span class="sub-title">AI-Powered Fatigue Detection & Safety System</span>
+        </div>
+
+        <div class="nav-status">
+            <span id="connection-dot" class="dot"></span>
+            <span id="connection-status">System Online</span>
+        </div>
+    </nav>
+
+    <main class="dashboard">
+
+        <div class="grid-container">
+            <!-- Video Feed Section -->
+            <section class="card video-card">
+                <div class="card-header">
+                    <i class="fas fa-video"></i>
+                    <h2>Live Vision Feed</h2>
+                    <div class="live-indicator">LIVE</div>
+                </div>
+                <div class="video-container">
+                    <img src="{{ url_for('video_feed') }}" id="video-feed" alt="Vision Feed">
+                    <div id="calibration-overlay" class="overlay hidden">
+                        <div class="spinner"></div>
+                        <p>Calibrating System... <span id="calib-progress">0%</span></p>
+                    </div>
+                    <div id="paused-overlay" class="overlay hidden">
+                        <p>Monitoring Paused</p>
+                    </div>
+                </div>
+                <div class="video-controls">
+                    <button id="btn-toggle" class="btn btn-primary">Stop Monitoring</button>
+                    <button id="btn-calibrate" class="btn btn-secondary">Re-Calibrate</button>
+                </div>
+            </section>
+
+            <!-- Metrics Section -->
+            <section class="card metrics-card">
+                <div class="card-header">
+                    <i class="fas fa-chart-line"></i>
+                    <h2>Biometric Metrics</h2>
+                </div>
+                
+                <div class="metric-item">
+                    <div class="metric-info">
+                        <span class="label">PERCLOS</span>
+                        <span id="val-perclos" class="value">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="bar-perclos" class="progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div class="metric-item">
+                    <div class="metric-info">
+                        <span class="label">Eye Aspect Ratio (EAR)</span>
+                        <span id="val-ear" class="value">0.000</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="bar-ear" class="progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div class="metric-item">
+                    <div class="metric-info">
+                        <span class="label">Mouth Aspect Ratio (MAR)</span>
+                        <span id="val-mar" class="value">0.000</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="bar-mar" class="progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div class="pose-grid">
+                    <div class="pose-item">
+                        <span class="label">Pitch</span>
+                        <span id="val-pitch" class="value">0°</span>
+                    </div>
+                    <div class="pose-item">
+                        <span class="label">Yaw</span>
+                        <span id="val-yaw" class="value">0°</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Status Section -->
+            <section class="card status-card">
+                <div class="card-header">
+                    <i class="fas fa-shield-alt"></i>
+                    <h2>System Status</h2>
+                </div>
+                <div class="status-display">
+                    <div id="main-status-icon" class="status-icon active">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3 id="main-status-text">Active Monitoring</h3>
+                    <p id="status-desc">System is scanning for fatigue patterns.</p>
+                </div>
+                <div id="alert-banner" class="alert-banner hidden">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span id="alert-text">FATIGUE DETECTED!</span>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 GuardianAI Safety Systems. Professional Grade Monitoring.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
