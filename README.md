@@ -123,10 +123,3 @@ Press `q` to terminate the application video loop.
 * **Web Framework:** Flask, HTML5/CSS3, JavaScript
 
 ```
-
-<FollowUp>
-<Suggest>Would you like me to generate a matching sample `requirements.txt` file for this repository?</Suggest>
-<Suggest>Would you like me to draft a high-impact GitHub repository bio and project summary tags for this project?</Suggest>
-</FollowUp>
-
-```
